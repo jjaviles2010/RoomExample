@@ -1,6 +1,7 @@
 package com.jlapp.roomexample
 
 import android.app.Application
+import com.facebook.stetho.Stetho
 import com.jlapp.roomexample.di.dbModule
 import com.jlapp.roomexample.di.repositoryModule
 import com.jlapp.roomexample.di.uiModule
@@ -13,6 +14,10 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        if (BuildConfig.DEBUG) {
+            Stetho.initializeWithDefaults(this)
+        }
 
         // Start Koin
         startKoin{
